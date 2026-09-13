@@ -19,4 +19,9 @@ def home():
     return {"message": "FastAPI + PostgreSQL is working!"}
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 app.include_router(students_router)
