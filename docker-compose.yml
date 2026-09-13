@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:18
+    container_name: student-management-db
+    environment:
+      POSTGRES_DB: devdb
+      POSTGRES_USER: rudra
+      POSTGRES_PASSWORD: rudra_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  backend:
+    build: .
+    container_name: student-management-backend
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: devdb
+      DB_USER: rudra
+      DB_PASSWORD: rudra_dev_password
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

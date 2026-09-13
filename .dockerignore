@@ -1,6 +1,7 @@
-.env
+.venv/
 __pycache__/
 *.pyc
-.venv/
+.git/
+.env
+.pytest_cache/
 devdb_backup.sql
-
